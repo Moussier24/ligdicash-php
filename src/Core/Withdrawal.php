@@ -1,6 +1,6 @@
 <?php
 
-namespace Ligdicash\Core\Payout;
+namespace Ligdicash\Core\Withdrawal;
 
 use InvalidArgumentException;
 use Ligdicash\Core\Providers\APIConfig;

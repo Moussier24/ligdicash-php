@@ -101,7 +101,7 @@ $response = $invoice->payWithoutRedirection([
     ]
 ]);
 
-const token = response->token;
+$token = $response->token;
 check_payment_status(token);
 ```
 
@@ -125,7 +125,7 @@ $transaction = $withdrawal->send([
     "callback_url" => "https://backend.masuperboutique.com/callback-payout",
 ]);
 
-$token = transaction->token;
+$token = $transaction->token;
 check_payment_status(token);
 ```
 

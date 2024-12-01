@@ -11,7 +11,7 @@
       "src/Core/Providers.php",
       "src/Core/Errors.php",
       "src/Core/Payin.php",
-      "src/Core/Payout.php",
+      "src/Core/Withdrawal.php",
       "src/Core/Responses.php"
     ],
     "files": [

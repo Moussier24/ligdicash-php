@@ -29,7 +29,7 @@ class Ligdicash
         $this->configs = $configs;
     }
 
-    public function Withdrawal(array $params): \Ligdicash\Core\Payout\Withdrawal
+    public function Withdrawal(array $params): \Ligdicash\Core\Withdrawal\Withdrawal
     {
         $amount = $params["amount"];
         $description = $params["description"] ?? "";
@@ -39,7 +39,7 @@ class Ligdicash
             throw new \InvalidArgumentException("Amount, description and customer are required.");
         }
 
-        return new \Ligdicash\Core\Payout\Withdrawal(
+        return new \Ligdicash\Core\Withdrawal\Withdrawal(
             $this->configs,
             $amount,
             $description,

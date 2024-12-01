@@ -10,8 +10,9 @@ class BaseResponse
     public $description;
     public $custom_data;
     public $wiki;
+    public $raw;
 
-    public function __construct($response_code, $token, $response_text, $description, $wiki, $custom_data = [])
+    public function __construct($response_code, $token, $response_text, $description, $wiki, $custom_data = [], $raw = null)
     {
         $this->response_code = $response_code;
         $this->token = $token;
@@ -19,6 +20,7 @@ class BaseResponse
         $this->description = $description;
         $this->wiki = $wiki;
         $this->custom_data = $custom_data;
+        $this->raw = $raw;
     }
 
     public static function fromArray($data)
@@ -29,7 +31,8 @@ class BaseResponse
             $data['response_text'],
             $data['description'],
             $data['wiki'],
-            isset($data['custom_data']) ? $data['custom_data'] : []
+            isset($data['custom_data']) ? $data['custom_data'] : [],
+            $data
         );
     }
 }
@@ -63,9 +66,10 @@ class StatusResponse extends BaseResponse
         $transaction_id = null,
         $date = null,
         $customer = null,
-        $request_id = null
+        $request_id = null,
+        $raw = null
     ) {
-        parent::__construct($response_code, $token, $response_text, $description, $wiki, $custom_data);
+        parent::__construct($response_code, $token, $response_text, $description, $wiki, $custom_data, $raw);
         $this->montant = $montant;
         $this->amount = $amount;
         $this->status = $status;
@@ -96,7 +100,8 @@ class StatusResponse extends BaseResponse
             isset($data['transaction_id']) ? $data['transaction_id'] : null,
             isset($data['date']) ? $data['date'] : null,
             isset($data['customer']) ? $data['customer'] : null,
-            isset($data['request_id']) ? $data['request_id'] : null
+            isset($data['request_id']) ? $data['request_id'] : null,
+            $data
         );
     }
 }
